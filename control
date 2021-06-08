@@ -1,0 +1,9 @@
+Package: com.nahtedetihw.volvibes
+Name: VolVibes
+Depends: mobilesubstrate, ws.hbang.common, com.spark.libsparkcolourpicker
+Version: 2.8
+Architecture: iphoneos-arm
+Description: Change the Volume Button vibrations, color the Volume HUD, and add volume percent!
+Maintainer: Ethan Whited
+Author: Ethan Whited
+Section: Tweaks

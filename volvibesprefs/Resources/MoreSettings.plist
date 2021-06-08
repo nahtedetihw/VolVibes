@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkListCell</string>
+			<key>default</key>
+			<string></string>
+			<key>detail</key>
+			<string>VVBSMiniSettingsListController</string>
+			<key>defaults</key>
+			<string>com.nahtedetihw.volvibes</string>
+			<key>label</key>
+			<string>Mini HUD Customization</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkListCell</string>
+			<key>default</key>
+			<string></string>
+			<key>detail</key>
+			<string>VVBSLargeSettingsListController</string>
+			<key>defaults</key>
+			<string>com.nahtedetihw.volvibes</string>
+			<key>label</key>
+			<string>Large HUD Customization</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkListCell</string>
+			<key>default</key>
+			<string></string>
+			<key>detail</key>
+			<string>VVBSGiantSettingsListController</string>
+			<key>defaults</key>
+			<string>com.nahtedetihw.volvibes</string>
+			<key>label</key>
+			<string>Giant HUD Customization</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Slider Corner Radius (Modern)</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.nahtedetihw.volvibes</string>
+			<key>key</key>
+			<string>enableSliderCornerRadius</string>
+			<key>label</key>
+			<string>Enable Slider Corner Radius</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Dim Alpha</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<real>0.18</real>
+			<key>defaults</key>
+			<string>com.nahtedetihw.volvibes</string>
+			<key>key</key>
+			<string>customDimAlpha</string>
+			<key>max</key>
+			<integer>1</integer>
+			<key>min</key>
+			<integer>0</integer>
+			<key>isSegmented</key>
+			<false/>
+			<key>showValue</key>
+			<true/>
+			<key>PostNotification</key>
+			<string>com.nahtedetihw.volvibes/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Dismiss Timer</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBStepperTableCell</string>
+			<key>default</key>
+			<string>1</string>
+			<key>defaults</key>
+			<string>com.nahtedetihw.volvibes</string>
+			<key>key</key>
+			<string>customDismissTime</string>
+			<key>label</key>
+			<string>Dismiss Time %is</string>
+			<key>max</key>
+			<integer>20</integer>
+			<key>min</key>
+			<integer>0</integer>
+			<key>singularLabel</key>
+			<string>Dismiss Time 1s</string>
+			<key>PostNotification</key>
+			<string>com.nahtedetihw.volvibes/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Y Offset</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<integer>204</integer>
+			<key>defaults</key>
+			<string>com.nahtedetihw.volvibes</string>
+			<key>key</key>
+			<string>customHUDYOffset</string>
+			<key>max</key>
+			<integer>800</integer>
+			<key>min</key>
+			<integer>0</integer>
+			<key>isSegmented</key>
+			<true/>
+			<key>showValue</key>
+			<true/>
+			<key>PostNotification</key>
+			<string>com.nahtedetihw.volvibes/ReloadPrefs</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string></string>
+</dict>
+</plist>
