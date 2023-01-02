@@ -7,7 +7,7 @@ FINALPACKAGE = 1
 
 PREFIX=$(THEOS)/toolchain/Xcode.xctoolchain/usr/bin/
 
-SYSROOT=$(THEOS)/sdks/iphoneos14.0.sdk
+SYSROOT=$(THEOS)/sdks/iphoneos14.2.sdk
 
 include $(THEOS)/makefiles/common.mk
 

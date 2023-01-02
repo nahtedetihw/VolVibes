@@ -257,21 +257,9 @@ UIViewController *popController;
     
     AudioServicesPlaySystemSound(1519);
 
-    self.changelogController = [[OBWelcomeController alloc] initWithTitle:@"VolVibes" detailText:@"2.8" icon:[UIImage imageWithContentsOfFile:@"/Library/PreferenceBundles/volvibesprefs.bundle/CHANGELOGICON.png"]];
+    self.changelogController = [[OBWelcomeController alloc] initWithTitle:@"VolVibes" detailText:@"3.0" icon:[UIImage imageWithContentsOfFile:@"/Library/PreferenceBundles/volvibesprefs.bundle/CHANGELOGICON.png"]];
 
-    [self.changelogController addBulletedListItemWithTitle:@"Volume Percent" description:@"Added option to color the volume percent. Also added better dismiss transition so it doesn't stick on-screen." image:[UIImage systemImageNamed:@"1.circle.fill"]];
-    
-    [self.changelogController addBulletedListItemWithTitle:@"Respring" description:@"Removed delay in respring." image:[UIImage systemImageNamed:@"2.circle.fill"]];
-    
-    [self.changelogController addBulletedListItemWithTitle:@"OLED" description:@"Added better transitions for OLED Mode." image:[UIImage systemImageNamed:@"3.circle.fill"]];
-    
-    [self.changelogController addBulletedListItemWithTitle:@"Prefs Buttons" description:@"Fixed prefs buttons not showing." image:[UIImage systemImageNamed:@"4.circle.fill"]];
-    
-    [self.changelogController addBulletedListItemWithTitle:@"Reset Prefs" description:@"Fixed an issue with Reset Prefs not removing everything." image:[UIImage systemImageNamed:@"5.circle.fill"]];
-    
-    [self.changelogController addBulletedListItemWithTitle:@"Separate Steps" description:@"Added another slider to define step amount for built-in speaker vs headphones." image:[UIImage systemImageNamed:@"6.circle.fill"]];
-    
-    [self.changelogController addBulletedListItemWithTitle:@"Modern Slider" description:@"Added an option to apply a corner radius to the top slider for a more modern look." image:[UIImage systemImageNamed:@"7.circle.fill"]];
+    [self.changelogController addBulletedListItemWithTitle:@"Support" description:@"Added support for iOS 15 - iOS 16." image:[UIImage systemImageNamed:@"1.circle.fill"]];
 
     _UIBackdropViewSettings *settings = [_UIBackdropViewSettings settingsForStyle:2];
 

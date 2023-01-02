@@ -4,7 +4,7 @@ include $(THEOS)/makefiles/common.mk
 
 PREFIX=$(THEOS)/toolchain/Xcode.xctoolchain/usr/bin/
 
-SYSROOT=$(THEOS)/sdks/iphoneos14.0.sdk
+SYSROOT=$(THEOS)/sdks/iphoneos14.2.sdk
 
 BUNDLE_NAME = volvibesprefs
 $(BUNDLE_NAME)_FILES = VVBSPreferences.m

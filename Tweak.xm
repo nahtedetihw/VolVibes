@@ -57,25 +57,38 @@ BOOL isPlayingOnBuiltInSpeaker() {
 }
 
 %group VolVibes
+%hook MTMaterialView
+-(void)_updateRecipeNameIfNeeded {
+    %orig;
+    if ([self.recipeName isEqual:@"elasticHUDBackground"]) {
+        if (colorVolSlider) {
+            self.backgroundColor = [SparkColourPickerUtils colourWithString:[colorDictionary objectForKey:@"colorVolSliderKey"] withFallback:@"#777777"];
+        }
+    }
+    if ([self.recipeName isEqual:@"modules"] && [NSStringFromClass([self.superview class]) isEqualToString:@"SBElasticSliderView"]) {
+        if (colorVolTopSlider) {
+            self.backgroundColor = [SparkColourPickerUtils colourWithString:[colorDictionary objectForKey:@"colorVolTopSliderKey"] withFallback:@"#ffffff"];
+        }
+    }
+}
+%end
+
 %hook SBElasticSliderView
 -(id)initWithFrame:(CGRect)arg1 {
     self = %orig;
-    
     if (colorVolSlider) {
         self.backgroundColor = [SparkColourPickerUtils colourWithString:[colorDictionary objectForKey:@"colorVolSliderKey"] withFallback:@"#777777"];
         MTMaterialView *backgroundView = MSHookIvar<MTMaterialView *>(self, "_backgroundView");
         backgroundView.hidden = YES;
     }
-    
     if (colorVolTopSlider) {
         UIView *valueIndicatorClippingView = MSHookIvar<UIView *>(self, "_valueIndicatorClippingView");
         valueIndicatorClippingView.backgroundColor = [SparkColourPickerUtils colourWithString:[colorDictionary objectForKey:@"colorVolTopSliderKey"] withFallback:@"#ffffff"];
         
-        for (MTMaterialView *topmaterialview in valueIndicatorClippingView.subviews) {
-            topmaterialview.hidden = YES;
+        for (MTMaterialView *topMaterialView in valueIndicatorClippingView.subviews) {
+            topMaterialView.hidden = YES;
         }
     }
-    
     return self;
 }
 
@@ -184,12 +197,16 @@ BOOL isPlayingOnBuiltInSpeaker() {
 -(void)_continueTrackingWithGestureRecognizer:(id)arg1 {
     %orig;
     if (hudStyle == 0) {
+        MSHookIvar<long long>(self, "_state") = 0;
         [self _updateSliderViewMetricsForState:0 bounds:self.view.bounds integralized:YES useSizeSpringData:YES useCenterSpringData:YES];
     } else if (hudStyle == 1) {
+        MSHookIvar<long long>(self, "_state") = 2;
         [self _updateSliderViewMetricsForState:2 bounds:self.view.bounds integralized:YES useSizeSpringData:YES useCenterSpringData:YES];
     } else if (hudStyle == 2) {
+        MSHookIvar<long long>(self, "_state") = 1;
         [self _updateSliderViewMetricsForState:1 bounds:self.view.bounds integralized:YES useSizeSpringData:YES useCenterSpringData:YES];
     } else if (hudStyle == 3) {
+        MSHookIvar<long long>(self, "_state") = 3;
         [self _updateSliderViewMetricsForState:3 bounds:self.view.bounds integralized:YES useSizeSpringData:YES useCenterSpringData:YES];
     }
 }
@@ -356,6 +373,81 @@ else %orig;
 %end
 
 %hook SBVolumeHUDSettings
+- (float)volumeStepDelta {
+    return 0; // set this to 0 to let volume go below 6%
+}
+-(double)dimmingAlpha {
+    return customDimAlpha;
+}
+-(double)dismissalInterval {
+    return customDismissTime;
+}
+-(double)landscapeStateBaseCornerRadius {
+    return customLandscapeLargeHUDCornerRadius;
+}
+-(double)landscapeState1CornerRadius {
+    return customLandscapeLargeHUDCornerRadius;
+}
+-(double)landscapeState2CornerRadius {
+    return customLandscapeMiniHUDCornerRadius;
+}
+-(double)landscapeState3CornerRadius {
+    return customLandscapeGiantHUDCornerRadius;
+}
+-(double)portraitStateBaseCornerRadius {
+    return customPortraitLargeHUDCornerRadius;
+}
+-(double)portraitState1CornerRadius {
+    return customPortraitLargeHUDCornerRadius;
+}
+-(double)portraitState2CornerRadius {
+    return customPortraitMiniHUDCornerRadius;
+}
+-(double)portraitState3CornerRadius {
+    return customPortraitGiantHUDCornerRadius;
+}
+-(double)landscapeState1Width {
+    return customLandscapeLargeHUDWidth;
+}
+-(double)landscapeState1Height {
+    return customLandscapeLargeHUDHeight;
+}
+-(double)landscapeState2Width {
+    return customLandscapeMiniHUDWidth;
+}
+-(double)landscapeState2Height {
+    return customLandscapeMiniHUDHeight;
+}
+-(double)landscapeState3Width {
+    return customLandscapeGiantHUDWidth;
+}
+-(double)landscapeState3Height {
+    return customLandscapeGiantHUDHeight;
+}
+-(double)portraitState1Width {
+    return customPortraitLargeHUDWidth;
+}
+-(double)portraitState1Height {
+    return customPortraitLargeHUDHeight;
+}
+-(double)portraitState2Width {
+    return customPortraitMiniHUDWidth;
+}
+-(double)portraitState2Height {
+    return customPortraitMiniHUDHeight;
+}
+-(double)portraitState3Width {
+    return customPortraitGiantHUDWidth;
+}
+-(double)portraitState3Height {
+    return customPortraitGiantHUDHeight;
+}
+-(double)volumeButtonsCenterY {
+    return customHUDYOffset;
+}
+%end
+
+%hook SBElasticHUDSettings
 - (float)volumeStepDelta {
     return 0; // set this to 0 to let volume go below 6%
 }

@@ -394,7 +394,7 @@
 			<key>footerAlignment</key>
 			<string>1</string>
 			<key>footerText</key>
-			<string>VolVibes 2.8</string>
+			<string>VolVibes 3.0</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -402,7 +402,7 @@
 			<key>footerAlignment</key>
 			<string>1</string>
 			<key>footerText</key>
-			<string>2020 © ETHN</string>
+			<string>2022 © ETHN</string>
 		</dict>
 	</array>
 	<key>title</key>
