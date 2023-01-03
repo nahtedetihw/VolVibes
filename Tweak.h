@@ -12,6 +12,13 @@
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
+@interface UIImpactFeedbackGenerator (Private)
+- (id)initWithStyle:(long long)arg1;
+- (void)prepare;
+- (void)fire;
+- (void)impactOccured;
+@end
+
 @interface _UILegibilitySettings : NSObject
 @property (nonatomic, strong) UIColor *primaryColor;
 @end
@@ -34,12 +41,16 @@
 - (id)_viewControllerForAncestor;
 @end
 
-@interface SBElasticVolumeViewController : UIViewController
+@interface SBElasticValueViewController : UIViewController
+@end
+
+@interface SBElasticVolumeViewController : SBElasticValueViewController
 -(void)_updateSliderViewMetricsForState:(long long)arg1 bounds:(CGRect)arg2 integralized:(BOOL)arg3 useSizeSpringData:(BOOL)arg4 useCenterSpringData:(BOOL)arg5;
 @property (nonatomic, strong) UIView *OLEDView;
 @property (nonatomic,readonly) BOOL volumeUpButtonIsDown;
 @property (nonatomic,readonly) BOOL volumeDownButtonIsDown;
 -(float)currentVolume;
+- (void)volumeChanged:(NSNotification *)notification;
 @end
 
 @interface CCUIBaseSliderView : UIControl

@@ -268,7 +268,6 @@ BOOL isPlayingOnBuiltInSpeaker() {
 }
 
 -(void)noteVolumeDownWasHit:(BOOL)arg1 {
-    
     switch (feedbackStyle) {
 
         case 0:
@@ -432,6 +431,73 @@ else %orig;
 %end
 
 %group VolVibes1516
+%hook SBElasticValueViewController
+-(void)noteButtonUpWasHit:(BOOL)arg1 {
+    %orig;
+    
+    switch (feedbackStyle) {
+        case 0:
+            feedbackSelection = UIImpactFeedbackStyleSoft;
+            feedbackcall();
+        break;
+
+        case 1:
+            feedbackSelection = UIImpactFeedbackStyleLight;
+            feedbackcall();
+        break;
+
+        case 2:
+            feedbackSelection = UIImpactFeedbackStyleMedium;
+            feedbackcall();
+        break;
+        
+        case 3:
+            feedbackSelection = UIImpactFeedbackStyleHeavy;
+            feedbackcall();
+        break;
+
+        case 4:
+        break;
+
+        default:
+        break;
+    }
+    
+}
+
+-(void)noteButtonDownWasHit:(BOOL)arg1 {
+    %orig;
+    
+    switch (feedbackStyle) {
+        case 0:
+            feedbackSelection = UIImpactFeedbackStyleSoft;
+            feedbackcall();
+        break;
+
+        case 1:
+            feedbackSelection = UIImpactFeedbackStyleLight;
+            feedbackcall();
+        break;
+
+        case 2:
+            feedbackSelection = UIImpactFeedbackStyleMedium;
+            feedbackcall();
+        break;
+        
+        case 3:
+            feedbackSelection = UIImpactFeedbackStyleHeavy;
+            feedbackcall();
+        break;
+
+        case 4:
+        break;
+
+        default:
+        break;
+    }
+}
+%end
+
 %hook SBElasticVolumeViewController
 %property (nonatomic, strong) UIView *OLEDView;
 - (void)viewDidLoad {
@@ -543,6 +609,7 @@ else %orig;
 // Change label during sliding gesture
 -(void)_updateVolumeLevelSlider:(float)arg1 animated:(BOOL)arg2 {
     %orig;
+    
     if (volPercent) {
         _UILegibilityLabel *leadingLabel = MSHookIvar<_UILegibilityLabel *>(self, "_leadingLabel");
         leadingLabel.alpha = 1;
@@ -551,77 +618,6 @@ else %orig;
         leadingLabel.settings.primaryColor = [SparkColourPickerUtils colourWithString:[colorDictionary objectForKey:@"volPercentLabelColorKey"] withFallback:@"#ffffff"];
     }
 }
-
-// Add vibrations
--(void)noteButtonUpWasHit:(BOOL)arg1 {
-    
-    switch (feedbackStyle) {
-
-        case 0:
-        feedbackSelection = UIImpactFeedbackStyleSoft;
-        feedbackcall();
-        break;
-
-        case 1:
-        feedbackSelection = UIImpactFeedbackStyleLight;
-        feedbackcall();
-        break;
-
-        case 2:
-        feedbackSelection = UIImpactFeedbackStyleMedium;
-        feedbackcall();
-        break;
-        
-        case 3:
-        feedbackSelection = UIImpactFeedbackStyleHeavy;
-        feedbackcall();
-        break;
-
-        case 4:
-        break;
-
-        default:
-        break;
-
-    }
-    %orig;
-}
-
--(void)noteButtonDownWasHit:(BOOL)arg1 {
-    
-    switch (feedbackStyle) {
-
-        case 0:
-        feedbackSelection = UIImpactFeedbackStyleSoft;
-        feedbackcall();
-        break;
-
-        case 1:
-        feedbackSelection = UIImpactFeedbackStyleLight;
-        feedbackcall();
-        break;
-
-        case 2:
-        feedbackSelection = UIImpactFeedbackStyleMedium;
-        feedbackcall();
-        break;
-        
-        case 3:
-        feedbackSelection = UIImpactFeedbackStyleHeavy;
-        feedbackcall();
-        break;
-
-        case 4:
-        break;
-
-        default:
-        break;
-
-    }
-    %orig;
-}
-
-%end
 %end
 
 %hook MTMaterialView
@@ -692,7 +688,6 @@ else %orig;
 - (float)volumeStepDown {
     return 0; // set this to 0 to let volume go below 6%
 }
-
 %end
 
 %hook SBVolumeHUDViewController
