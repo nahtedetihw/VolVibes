@@ -12,13 +12,6 @@
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
-@interface UIImpactFeedbackGenerator (Private)
-- (id)initWithStyle:(long long)arg1;
-- (void)prepare;
-- (void)fire;
-- (void)impactOccured;
-@end
-
 @interface _UILegibilitySettings : NSObject
 @property (nonatomic, strong) UIColor *primaryColor;
 @end
